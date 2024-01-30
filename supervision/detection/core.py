@@ -136,7 +136,7 @@ class Detections:
             detections = sv.Detections.from_yolov5(result)
             ```
         """
-        yolov5_detections_predictions = yolov5_results.pred[0].cpu().cpu().numpy()
+        yolov5_detections_predictions = yolov5_results.pred[0].gpu().gpu().numpy()
 
         return cls(
             xyxy=yolov5_detections_predictions[:, :4],

@@ -71,6 +71,7 @@ if __name__ == "__main__":
 
     video_info = sv.VideoInfo.from_video_path(video_path=args.source_video_path)
     model = YOLO("yolov8x.pt")
+    model.to('cuda')
 
     byte_track = sv.ByteTrack(
         frame_rate=video_info.fps, track_thresh=args.confidence_threshold

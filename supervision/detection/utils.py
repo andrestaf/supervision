@@ -318,7 +318,7 @@ def extract_ultralytics_masks(yolov8_results) -> Optional[np.ndarray]:
     bottom, right = int(inference_shape[0] - pad[1]), int(inference_shape[1] - pad[0])
 
     mask_maps = []
-    masks = yolov8_results.masks.data.cpu().numpy()
+    masks = yolov8_results.masks.data.gpu().numpy()
     for i in range(masks.shape[0]):
         mask = masks[i]
         mask = mask[top:bottom, left:right]
